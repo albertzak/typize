@@ -1,0 +1,68 @@
+* { 
+	margin: 0;
+	padding: 0;
+}
+
+html, body {
+	width: 100%;
+	height: 100%;
+	font-size: 200%;
+	overflow: hidden;
+	color: #000;
+}
+
+#typize {
+	text-align: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #ccc;
+	padding-top:10%;
+
+    -webkit-box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.1),
+            0 0 16px rgba(0,0,0,0.1); 
+    -moz-box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.1),
+            0 0 16px rgba(0,0,0,0.1); 
+    box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.1),
+            0 0 16px rgba(0,0,0,0.1); 
+}
+
+#info {
+	position: absolute;
+	left: 10px;
+	top: 10px;
+	width: 320px;
+	background: white;
+	color: black;
+	font-size: 12pt;
+	z-index: 2;
+}
+
+.gt4 {
+	color: yellow;
+}
+
+.lt5 {
+	color: purple;
+}
+
+.lt4 {
+	color: red;
+}
+
+.lt3 {
+	color: green;
+}
+
+.lt2 {
+	color: blue;
+}
+
+.lt1 {
+
+}
