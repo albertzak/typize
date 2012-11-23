@@ -7,6 +7,7 @@ $ ->
 	typize.html localStorage.getItem('typize_content') if localStorage.getItem('typize_content')
 	typize.html $.base64.decode(document.location.hash.substr(1)) if document.location.hash
 
+	typize.css('min-height', $(window).height()-170)
 
 	typize.bind 'input propertychange', keyup = =>
 		captureInput()
@@ -24,9 +25,6 @@ $ ->
 		localStorage.clear()
 		document.location.hash = '#CgkJCTxkaXYgY2xhc3M9ImhyIj48YnI+PC9kaXY+CgkJ' # empty div
 		location.reload()
-
-	$('#b_insert').bind 'click', click = (c) =>
-		c.preventDefault()
 
 
 	# Prevent browsers from inserting <br> or <div> tags when return is pressed. Doesn't work reliably though	
@@ -50,7 +48,6 @@ $ ->
 				line.addClass 'hr'
 		
 	sanitizeLines = (lineArray) ->
-		# if not $('#typize div')[0] then typize.html '<div></div>'
 		sanitizedLines = []
 		lineArray.each sanitize = (i, line) =>
 			line = $(line)
