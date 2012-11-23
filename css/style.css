@@ -7,19 +7,23 @@ html, body {
 	width: 100%;
 	height: 100%;
 	font-size: 200%;
-	overflow: hidden;
 	color: #000;
 }
 
 #typize {
 	text-align: center;
-	position: fixed;
+
 	top: 0;
 	left: 0;
 	width: 100%;
-	height: 100%;
+
 	background: #ccc;
 	padding-top:10%;
+	padding-bottom: 25%;
+	
+	overflow: scroll;
+
+	text-shadow: 1px 2px 1px rgba(150, 150, 150, 1);
 
     -webkit-box-shadow: 
       inset 0 0 8px  rgba(0,0,0,0.1),
@@ -33,36 +37,126 @@ html, body {
 }
 
 #info {
-	position: absolute;
-	left: 10px;
-	top: 10px;
-	width: 320px;
-	background: white;
-	color: black;
-	font-size: 12pt;
+	position: fixed;
+	bottom: 30px;
+	width: 100%;
+	text-align: center;
+	color: #333;
+	font-size: 16pt;
 	z-index: 2;
 }
 
-.gt4 {
-	color: yellow;
+.lt1, .lt2, .lt3 {
+	font-family: 'Aguafina Script', cursive;
+} 
+
+.lt4, .lt5, .lt6, .lt7, .lt8, .lt9, .lt10, .gt10 {
+	font-family: 'Abril Fatface', cursive;
+}
+
+
+
+.hr {
+	line-height: 1.2em;
+}
+
+.lt10, .gt10 {
+	color: #222;
+	width: 7.1em;
+	margin: 0.5em auto 0.5em auto;
+	border-bottom: 0.1em solid #888;
+	border-top: 0.1em solid #888;
+}
+
+.lt9 {
+	color: #444;
+	text-shadow: 4px 3px 0px rgba(0,0,0,0.15), 8px 6px 0px rgba(0,0,0,0.15), 12px 9px 0px rgba(0,0,0,0.15);
+}
+
+.lt8 {
+	font-family: 'Aguafina Script', cursive;
+	letter-spacing: 0.4em;
+	color: #333;
+	text-shadow: 1px 2px 1px rgba(250, 250, 250, 1);
+}
+
+.lt7 {
+	font-size: 1.4em;
+	margin-left: 0.2em;
+	letter-spacing: 0.3em;
+	text-shadow: 1px 2px 1px rgba(250, 250, 250, 1);
+}
+
+.lt6 {
+	font-size: 1.6em;
+	margin-left: 0.2em;
+	letter-spacing: 0.3em;
+	text-shadow: 1px 2px 1px rgba(250, 250, 250, 1);
 }
 
 .lt5 {
-	color: purple;
+	font-size: 1.8em;
+	margin-left: 0.2em;
+	letter-spacing: 0.3em;
 }
 
 .lt4 {
-	color: red;
+	font-size: 2em;
+	margin-left: 0.3em;
+	letter-spacing: 0.3em;
 }
 
-.lt3 {
-	color: green;
+.lt4, .lt5, .lt6, .lt7 {
+	color: #333;
+	text-shadow: 4px 3px 0px #fff, 9px 8px 0px rgba(0,0,0,0.15);
 }
 
 .lt2 {
-	color: blue;
+	background: #333;
+	color: #fff;
+
+	border: 0.2em solid #ccc;
+	width: 1em;
+	height: 1em;
+	margin: 0 auto 0 auto;
+    padding: 0.2em 0.4em 0.4em 0.2em;
+
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    -khtml-border-radius: 50%;
+}
+
+.lt2 {
+	font-size: 1.2em;
+}
+
+.lt3 {
+	font-size: 1em;
+	color: #333;
+	padding: 1.2em 0 0 -1em;
 }
 
 .lt1 {
-
+	color: #444;
 }
+
+.lt1:before, .lt1:after {
+	content:' ';
+	display: inline-block;
+	border-top: 0.05em solid #999;
+	width: 3em;
+	margin: 0.2em;
+}
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,75 +1,76 @@
 $ ->
 	typize = $('#typize')
 	view = $(window)
-	info = $('#info')
 
-	# localStorage
+	# Save the editablecontent in a localStorage variable
+	# 
 	typize.html localStorage.getItem('typize_content') if localStorage.getItem('typize_content')
+	typize.html $.base64.decode(document.location.hash.substr(1)) if document.location.hash
+
+
 	typize.bind 'input propertychange', keyup = =>
 		captureInput()
 		localStorage.setItem('typize_content', typize.html())
-	typize.keyup = (k) ->
+		document.location.hash = $.base64.encode(typize.html())
+
+	$('#b_reset').bind 'click', click = (c) =>
+		c.preventDefault()
+		localStorage.clear()
+		document.location.hash = '' # load default content from server
+		location.reload()
+
+	$('#b_clear').bind 'click', click = (c) =>
+		c.preventDefault()
+		localStorage.clear()
+		document.location.hash = '#CgkJCTxkaXYgY2xhc3M9ImhyIj48YnI+PC9kaXY+CgkJ' # empty div
+		location.reload()
+
+	$('#b_insert').bind 'click', click = (c) =>
+		c.preventDefault()
+
+
+	# Prevent browsers from inserting <br> or <div> tags when return is pressed. Doesn't work reliably though	
+	typize.keydown = (k) ->
 		if k.keyCode is 13
+			k.preventDefault()
+		if k.keyCode is 13 && k.shiftKey
 			k.preventDefault()
 
 	captureInput = ->
-
 		typize.lines = (typize.children())
-		info.html ''
 		stylizeLines sanitizeLines(typize.lines)
 
-	stylizeLines = (lineDescriptor)	->
-		lines = lineDescriptor[0]
-		lineLengths = lineDescriptor[1]
-
-		lines.forEach printDebug = (line, i) ->
-			info.html info.html() + line.text() + ', trueLength: ' + lineLengths[i] + '<br>'
-			switch lineLengths[i]
-				when 0 then line.addClass 'lt1'
-				when 1 then line.addClass 'lt2'
-				when 2 then line.addClass 'lt3'
-				when 3 then line.addClass 'lt4'
-				when 4 then line.addClass 'lt5'
-				else line.addClass 'gt4'
-
+	stylizeLines = (lineArray)	->
+		lineArray.forEach printDebug = (line, i) ->	
+			if 0 < line.text().length <= 10
+				line.addClass 'lt' + line.text().length
+			if line.text().length > 10
+				line.addClass 'gt10'
+			if line.text().length is 0
+				line.addClass 'hr'
 		
 	sanitizeLines = (lineArray) ->
-		###
-		Every line inside a contenteditable field is wrapped
-		in a div EXCEPT for the first line. We can't just select the
-		plain text, so we push the parent element to our stack.
-		Since it's the first element, we don't care about styling
-		because the children's styles will have a higher priority.
-		###
+		# if not $('#typize div')[0] then typize.html '<div></div>'
 		sanitizedLines = []
-		lineLengths = []
-
-		sanitizedLines.push lineArray.parent()
-		lineLengths.push  lineArray.parent().clone().children().remove().end().contents().text().length
-
 		lineArray.each sanitize = (i, line) =>
 			line = $(line)
 			line.removeClass()
+
+			###
+			Some attempts to fix Firefox's default behavior for the return key.
+			They break Chrome, so I've commented them out.
+			###
+			#line.html line.html().replace('<br type="_moz"></br>', '')
+			#line.html line.html().replace('</br>','')	# handle Firefox newlines
+			#line.html line.html().replace('<br>','X')
+
 			sanitizedLines.push line
-			lineLengths.push line.text().length
 
 		###
 		The returned array's elements are jQuery references to the actual
 		DOM elements. Apply styling etc. via jQuery functions only.
-		The number of chars per line is saved in a separate array.
 		###
-
-		lineArray.parent().sanitizedLines = sanitizedLines
-		lineArray.parent().lineLengths = lineLengths
-
-		[ sanitizedLines, lineLengths ]
-
-
-			# info.text(info.text() + '[' + i+1 + '] ' + $(line).text() + ' (' + $(line).text().length + ')')
-			# switch $(line).text().length
-			# when 0 then alert 'zero' # insert hr
-			# when 1, 2 then $(line).addClass 'lt4' # circle, script font
-			# when 3, 4 then $(line).addClass 'lt2'
+		sanitizedLines
 
 
 	stylizeLines sanitizeLines(typize.children())
