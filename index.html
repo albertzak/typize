@@ -53,7 +53,7 @@
 			<div></div>
 			<div>You are </div>
 			<div>very</div>
-			<div>awesome.</div>
+			<div id="compliment">awesome.</div>
 		</div>
         <div id='info'><a href='#' id='b_reset'>Default</a> &middot; <a href='#' id='b_clear'>Clear</a><br />
 		<p>
@@ -66,5 +66,11 @@
 		<script src='lib/jquery-ui-1.9.1.custom.min.js'></script>
 		<script src='lib/jquery.base64.min.js'></script>
 		<script src='lib/typize.js'></script>
+		<script>
+			var quotes = ["alarming", "astonishing","pas mal", "awe-inspiring","inimitable","bonny","blue-chip","prime","jim-dandy","corker","pippin","ripsnorter","humdinger","lulu","crackerjack","faaaaaancy","awful","resplendent","sublime","splendiferous","splendorous","beauteous","ravishing","lambent","auroral","fulgid","مرعب","impressionant","fantastisk","impressionnant","מדהים","kjempeflott","Устрашающий","น่ากลัว","zəhmli","真棒","ontsagwekkende","awizom","خوفناک","素晴らしい","ógnvekjandi","děsivý","anhygoel","incrível","সন্ত্রস্ত", "wizard", "banging","swass","cool beans","fandabbydosey","dope","superlative","hot diggity damn", "beautiful", "breathtaking", "daunting", "dreadful", "exalted", "fearful", "fearsome", "formidable","incomparable","cray","cray cray","tres cray"," portentous","bewitching"," sensational","unwonted","aberrant",  "frantic", "frightening", "grand", "hairy", "horrible", "horrifying", "imposing", "impressive", "intimidating","magnificent", "majestic", "mean", "mind-blowing", "moving", "overwhelming", "shocking", "something else", "striking", "stunning", "stupefying", "terrifying", "wonderful", "wondrous", "zero cool", "aces",  "out of this world", "out-and-out", "perfect","spiffing","fandabbydosey", "jolly good", "boom", "beautiful","positive", "proficient", "super-duper", "surpassing", "terrific", "total", "transcendent", "tremendous", "unmitigated", "siiiiiiick", "astonishing", "astounding","the cats pajamas", "extraordinary", "fabulous", "glorious","saucy", "great", "prodigious", "superhuman", "unreal", "groovy", "peachy", "phenomenal", "primo", "rad", "remarkable", "spectacular", "striking", "stupendous", "super", "superb", "terrific", "top drawer", "tops", "turn-on","wicked", "scrumtrulescient","admirable", "adroit", "bad-ass", "best", "brutal","downright dynamite", "egregious", "exceptional" ,"fab", "fantastic", "fine", "first-class", "first-rate", "good", "heavy","spanky", "hellacious", "marvelous", "prizewinning" , "boffo" , "towering", "wondrous" , "hip", "captivating" , " beguiling" , "bully", "peachy keen", "heavenly","boss","swell","wise","eclipsing","flawless","pioneering", "me-ow","riveting","stellar","and how","copacetic","jake", "seismic", "wicked killah", "nifty", "oh ma ma", "monsterful","illecebrous","fantabulous" , "bootylicious" , "delicioso", "grand", "divine", "sick", "banging", "the cats meow", "legendary", "auspicious","masterly", "number one", "wah wah we wah" , "smashing", "top banana", "bomb-diggity","keen","swanky", "gnarly", "bodacious", "tight","tubular","out of sight","boy howdy"]
+			  , compliment = document.getElementById("compliment")
+              , rand = Math.ceil( Math.random() * (quotes.length - 1) );
+			compliment.innerHTML = quotes[rand];
+		</script>
 	</body>
 </html>
